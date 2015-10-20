@@ -52,6 +52,7 @@ Packman function (a Constructor) should contain following information :
 	
 	end : the end function will end the game and print the final score
 
+//clearscreen will clear the screen after every move
 
 //yet to decide where to put this function..can be anywhere..either in board/Packman or a seperate function.. :)
 print : a function will print both board as well as packman

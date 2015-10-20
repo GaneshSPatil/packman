@@ -1,0 +1,65 @@
+var ansi = require('ansi');
+
+//--------------------------------------------------------------------------------------------------------------//
+
+var Board = function(){
+	this.left_top = [30, 10],
+	this.right_top = [130, 10],
+
+	this.left_bottom = [30, 110],
+	this.right_bottom = [130, 110],
+
+  	this.cursor = ansi(process.stdout);
+};
+
+//--------------------------------------------------------------------------------------------------------------//
+
+Board.prototype = {
+	
+	food : [],
+
+	obstacles : [],
+
+	empty_space : [],
+
+	border_points : [],
+
+	generate_line : function(startPoint, endPoint){
+		var line_coOrdinates = [];
+		if(startPoint[0] != endPoint[0]){
+			for(var i = startPoint[0]; i <= endPoint[0]; i++)
+				line_coOrdinates.push([i, startPoint[1]]);
+		}else{
+			for(var i = startPoint[1]; i <= endPoint[1]; i++)
+				line_coOrdinates.push([startPoint[0], i]);
+		};
+		return line_coOrdinates;
+	},
+
+	generate_border : function(){
+		this.border_points = this.border_points.concat(this.generate_line(this.left_top, this.right_top));
+		this.border_points = this.border_points.concat(this.generate_line(this.left_top, this.left_bottom));
+		this.border_points = this.border_points.concat(this.generate_line(this.right_top, this.right_bottom));
+		this.border_points = this.border_points.concat(this.generate_line(this.left_bottom, this.right_bottom));
+	},
+
+	print_box : function(){
+		this.border_points.forEach(function(point){
+			this.cursor.goto(point[0], point[1]).write('#').reset();
+		})
+	},
+
+	print_food : function(){
+	},
+
+	print_obstacle : function(){
+
+	},
+
+};
+
+//--------------------------------------------------------------------------------------------------------------//
+
+var b = new Board();
+b.generate_border();
+b.print_box();
