@@ -1,0 +1,57 @@
+
+following files are to be created :
+	project_todo.txt
+	packman.js
+	packmanTest.js
+
+External Module Requirement :
+	ansi
+	colors
+
+----------------------------------------** PROJECT TODO **------------------------------------------
+
+the program should have seperated board and packman functions..
+
+Board function (a Constructor) should contain following information :
+	left_top  : left top corner of the grid..in which the player can play
+	right_top : right top corner of the grid..in which the player can play
+	left_bottom : left bottom corner of the grid..in which the player can play
+	right_bottom : right bottom corner of the grid..in which the player can play
+
+	food : Collection of co-ordinates of points where the food is placed
+		   For representation of food...use '.'
+
+	Obstacles : Collection of co-ordinates of points where there is a wall/obstacle
+				For representation of wall/obstacle use '-' or '|'
+
+	Empty_Space : the board should keep an empty space for the initial packamn position
+
+
+Packman function (a Constructor) should contain following information :
+	packman : representation of packman (a single Special Character) can use @''
+	
+	score : score of the player
+			initally it will be set to zero
+			It can be a getter/setter function
+
+	position : the current position of the packman
+			   It will be updated after every move
+			   Initially it will be set to a value where the board keeps and empty position
+
+	move : this function moves the packman one co-ordinate above below..left right
+		   According to which key has been pressed
+		   It will match the new position with board
+		   		whether there is a way to move it...
+		   		whether there is food available..
+		   		whether there is a wall..
+		   		etc.
+		   	Based on the selection and the comparison
+		   	the function will make decision..
+		   		whether to move..
+		   		Or to stop the game..as the packman hit the wall
+	
+	end : the end function will end the game and print the final score
+
+
+//yet to decide where to put this function..can be anywhere..either in board/Packman or a seperate function.. :)
+print : a function will print both board as well as packman
